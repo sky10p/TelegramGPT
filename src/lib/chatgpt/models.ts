@@ -5,6 +5,19 @@ export type ChatGptMessage = {
     content: string;
 }
 
+export type DailyUsageResponse = {
+    data: {
+        operation: 'completion',
+        n_context_tokens_total: number;
+        n_generated_tokens_total: number;
+    }[]
+}
+
+export type DailyUsage = {
+    tokens: number,
+    price: number
+}
+
 export type ChatGptResponse = {
     id: string,
     object: string,
