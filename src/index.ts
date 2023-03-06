@@ -8,7 +8,7 @@ import {
 } from "./lib/chatgpt/chat";
 import { ChatGptMessage } from "./lib/chatgpt/models";
 import { getDailyUsage, getMonthlyUsage } from "./lib/chatgpt/usage";
-import { isAllowed } from "./lib/permissions/telegram.permission";
+import { GuardMiddleware } from "./lib/telegram/middlewares";
 import { createStack } from "./lib/utils/stack";
 
 const messages = createStack<ChatGptMessage>(4);
@@ -23,30 +23,24 @@ bot.help((ctx) => {
   ctx.reply("Simplemente habla conmigo y verás de lo que soy capaz.😋");
 });
 
-bot.use(async (ctx, next) => {
-  const userId = ctx?.from?.id;
-  if (userId && isAllowed({ telegramUserId: userId })) {
-    await next();
-  } else {
-    ctx.reply("No tienes acceso, pregunta al administrador.");
-  }
-});
 
-bot.command("usage_day", async (ctx) => {
+
+
+bot.command("usage_day", GuardMiddleware, async (ctx) => {
   const dailyUsage = await getDailyUsage();
   ctx.reply(
-    `Hoy has usado ${dailyUsage.tokens} tokens, con un precio de ${dailyUsage.price} $`
+    `Hoy has usado ${dailyUsage.tokens} tokens y has generado ${dailyUsage.numImages} imágenes con un precio de ${dailyUsage.price} $`
   );
 });
 
-bot.command("usage_month", async (ctx) => {
+bot.command("usage_month", GuardMiddleware, async (ctx) => {
   const monthlyUsage = await getMonthlyUsage();
   ctx.reply(
-    `Este mes has usado ${monthlyUsage.tokens} tokens, con un precio de ${monthlyUsage.price} $`
+    `Este mes has usado ${monthlyUsage.tokens} tokens y has generado ${monthlyUsage.numImages} imágenes con un precio de ${monthlyUsage.price} $`
   );
 });
 
-bot.on(message("text"), async (ctx) => {
+bot.on(message("text"), GuardMiddleware, async (ctx) => {
   const text = ctx.message?.text;
   messages.push({ role: "user", content: text });
   const responseChatGpt = await sendChatGptMessages({

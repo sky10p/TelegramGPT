@@ -24,3 +24,10 @@ export const getFirstDayOfCurrentMonth = (): Date => {
     const utcDate = createDateWithoutTime(new Date());
     return getFirstDayOfMonth(utcDate);
 }
+
+export const getDayOfCurrentMonth = (): Date => {
+    const tomorrow = new Date()
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    const utcDate = createDateWithoutTime(tomorrow);
+    return utcDate;
+}
