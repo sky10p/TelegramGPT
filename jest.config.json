@@ -1,0 +1,7 @@
+{
+    "bail": true,
+    "verbose": true,
+    "preset": "ts-jest",
+    "testMatch": ["**/*.spec.ts"],
+    "rootDir": "src"
+}

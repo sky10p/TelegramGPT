@@ -4,7 +4,7 @@ import { message } from 'telegraf/filters';
 import { TELEGRAM_CONFIG } from "./config/telegram.config";
 import { getChatGptAnswser, sendMessages as sendChatGptMessages } from "./lib/chatgpt/chat";
 import { ChatGptMessage } from "./lib/chatgpt/models";
-import { getDailyUsage } from "./lib/chatgpt/usage";
+import { getDailyUsage, getMonthlyUsage } from "./lib/chatgpt/usage";
 import { isAllowed } from "./lib/permissions/telegram.permission";
 import { createStack } from "./lib/utils/stack";
 
@@ -20,7 +20,12 @@ bot.help((ctx) => {
 
 bot.command('usage_day', async (ctx) => {
     const dailyUsage = await getDailyUsage();
-    ctx.reply(`Hoy has usado ${dailyUsage.tokens} tokens, con un precio de ${dailyUsage.price}`)
+    ctx.reply(`Hoy has usado ${dailyUsage.tokens} tokens, con un precio de ${dailyUsage.price} $`)
+})
+
+bot.command('usage_month', async (ctx) => {
+    const monthlyUsage = await getMonthlyUsage();
+    ctx.reply(`Este mes has usado ${monthlyUsage.tokens} tokens, con un precio de ${monthlyUsage.price} $`)
 })
 
 bot.on(message('text'), async (ctx )=> {
