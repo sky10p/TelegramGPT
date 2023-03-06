@@ -4,6 +4,7 @@ import { message } from 'telegraf/filters';
 import { TELEGRAM_CONFIG } from "./config/telegram.config";
 import { getChatGptAnswser, getDailyUsage, sendMessages as sendChatGptMessages } from "./lib/chatgpt/chatgpt";
 import { ChatGptMessage } from "./lib/chatgpt/models";
+import { isAllowed } from "./lib/permissions/telegram.permission";
 import { createStack } from "./lib/utils/stack";
 
 const messages = createStack<ChatGptMessage>(4);
@@ -23,7 +24,7 @@ bot.command('usage_day', async (ctx) => {
 
 bot.on(message('text'), async (ctx )=> {
     const userId = ctx.from.id;
-    if(userId == 83730624){
+    if(isAllowed({telegramUserId: userId})){
         const text = ctx.message?.text;
         messages.push({role: 'user', content: text});
         const responseChatGpt = await sendChatGptMessages({messages: messages.getElements()});
