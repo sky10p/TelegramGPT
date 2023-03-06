@@ -54,3 +54,12 @@ export type ChatGptResponse = {
         total_tokens: number;
     }
 }
+
+export type DalleResponse = {
+    created: string,
+    data: {
+        url: string
+        
+    }[],
+   
+}
