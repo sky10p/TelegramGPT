@@ -2,8 +2,9 @@ import { Telegraf } from "telegraf";
 import { message } from 'telegraf/filters';
 
 import { TELEGRAM_CONFIG } from "./config/telegram.config";
-import { getChatGptAnswser, getDailyUsage, sendMessages as sendChatGptMessages } from "./lib/chatgpt/chatgpt";
+import { getChatGptAnswser, sendMessages as sendChatGptMessages } from "./lib/chatgpt/chat";
 import { ChatGptMessage } from "./lib/chatgpt/models";
+import { getDailyUsage } from "./lib/chatgpt/usage";
 import { isAllowed } from "./lib/permissions/telegram.permission";
 import { createStack } from "./lib/utils/stack";
 
