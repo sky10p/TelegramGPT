@@ -1,0 +1,50 @@
+flowchart TD
+
+    start["start"]
+    %% Image flow
+    image["Dall-e"]
+    big_dimension["1024x1024"]
+    medium_dimension["512x512"]
+    small_dimension["256x256"]
+    final_prompt["Final Prompt"]
+    natural_prompt["Natural Prompt"]
+    generate_image["Generate Image"]
+
+    %% Chat flow
+    improve["Mejorar input"]
+    translated_improve["Traducir y mejorar input"]
+    request_lang["Solicitar idioma"]
+    summarize["Resumen"]
+    key_points["Extraer puntos importantes"]
+    insert_text["Inserta texto"]
+
+    %% whisper flow
+    whisper["Whisper"]
+    transcript_audio["Transcribir audio"]
+    transcript_video["Transcribir video"]
+    
+
+    chat["chatGPT"]
+    start --> image
+    start --> chat
+    image --> big_dimension
+    image --> medium_dimension
+    image --> small_dimension
+    big_dimension --> generate
+     medium_dimension --> generate
+
+    small_dimension --> generate
+    subgraph generate
+    natural_prompt --> generate_image
+    final_prompt --> generate_image
+    end
+
+    chat --> improve --> insert_text
+    chat --> translated_improve -->request_lang --> insert_text
+    chat --> summarize
+    chat --> key_points
+
+
+    start --> whisper
+    whisper --> transcript_audio
+    whisper --> transcript_video

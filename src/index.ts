@@ -2,30 +2,22 @@ import { Markup, Scenes, session, Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
 
 import { TELEGRAM_CONFIG } from "./config/telegram.config";
-import {
-  getChatGptAnswser,
-  sendMessages as sendChatGptMessages,
-} from "./lib/chatgpt/chat";
-import { ChatGptMessage } from "./lib/chatgpt/models";
+
 import { getDailyUsage, getMonthlyUsage } from "./lib/chatgpt/usage";
 import { GuardMiddleware } from "./lib/telegram/middlewares";
 import { MyContext } from "./lib/telegram/models";
-import { generationImageScene } from "./lib/telegram/scenes/GenerationImageScene";
-import { insertPromptImageScene } from "./lib/telegram/scenes/InsertPromptImageScene";
-import { createStack } from "./lib/utils/stack";
+import { STAGE, stage } from "./lib/telegram/scenes";
+import { helpMessage } from "./lib/telegram/staticMessages/help.message";
 
-const messages = createStack<ChatGptMessage>(4);
 
 const bot = new Telegraf<MyContext>(TELEGRAM_CONFIG.KEY);
-
-const stage = new Scenes.Stage<MyContext>([generationImageScene, insertPromptImageScene])
 
 bot.start((ctx) =>
   ctx.reply("Este es un bot de Telegram usando la tecnología ChatGPT.")
 );
 bot.help((ctx) => {
   ctx.chat.id;
-  ctx.reply("Simplemente habla conmigo y verás de lo que soy capaz.😋");
+  ctx.reply(helpMessage);
 });
 
 bot.use(session());
@@ -47,7 +39,11 @@ bot.command("usage_month", GuardMiddleware, async (ctx) => {
 });
 
 bot.command("generation_image", GuardMiddleware, async (ctx) => {
-    ctx.scene.enter('generationImage')
+    ctx.scene.enter(STAGE.generationImage)
+});
+
+bot.command("chat", (ctx)=>{
+  ctx.scene.enter(STAGE.chat)
 })
 
 bot.command("cancel", async (ctx) => {
@@ -56,18 +52,9 @@ bot.command("cancel", async (ctx) => {
       );
 })
 
-bot.on(message("text"), GuardMiddleware, async (ctx) => {
-  const text = ctx.message?.text;
-  messages.push({ role: "user", content: text });
-  const responseChatGpt = await sendChatGptMessages({
-    messages: messages.getElements(),
-  });
-  console.log(responseChatGpt);
-  messages.push(responseChatGpt.choices[0].message);
-  const answer = getChatGptAnswser(responseChatGpt);
-  ctx.reply(answer, {
-    parse_mode: answer.includes("```") ? "Markdown" : undefined,
-  });
+bot.on(message("text"), async (ctx) => {
+  
+  ctx.reply("Elige una de las acciones disponibles, si tienes dudas utiliza el comando /help😇");
 });
 
 bot.launch();

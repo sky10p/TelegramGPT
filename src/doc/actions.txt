@@ -1,0 +1,6 @@
+help - Pide ayuda de cómo usar el bot
+chat - Empieza a conversar con TelegramGPT
+generation_image - Generar una imagen
+usage_day - Precio por día
+usage_month - Precio por mes
+cancel - Cancelar la operación actual

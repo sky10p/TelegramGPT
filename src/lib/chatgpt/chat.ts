@@ -3,10 +3,10 @@ import { ChatGptMessage, ChatGptResponse} from "./models";
 import { chatgptAxios } from "./utils";
 
 
-export const sendMessages = async ({messages, maxTokens=500}: {messages: ChatGptMessage[], maxTokens?: number}): Promise<ChatGptResponse> => {
+export const sendMessages = async ({messages, maxTokens=500, role}: {messages: ChatGptMessage[], maxTokens?: number, role?: ChatGptMessage}): Promise<ChatGptResponse> => {
     const data = {
         model: CHAT_GPT_MODEL,
-        messages,
+        messages: role ? [role, ...messages] : messages,
         max_tokens: maxTokens
     }
     try{
