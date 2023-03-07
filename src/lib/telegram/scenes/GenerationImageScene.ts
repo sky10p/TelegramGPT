@@ -21,7 +21,7 @@ generationImageScene.enter((ctx) => {
 });
 
 generationImageScene.action("1024x1024", async (ctx) => {
-  ctx.scene.session.imageSize = "1024x1024";
+  ctx.session.imageSize = "1024x1024";
   await ctx.reply(
     "Has elegido la opción de 1024x1024",
     Markup.removeKeyboard()
@@ -30,13 +30,13 @@ generationImageScene.action("1024x1024", async (ctx) => {
 });
 
 generationImageScene.action("512x512", async (ctx) => {
-  ctx.scene.session.imageSize = "512x512";
+  ctx.session.imageSize = "512x512";
   await ctx.reply("Has elegido la opción de 512x512", Markup.removeKeyboard());
   ctx.scene.enter(STAGE.insertPromptImage);
 });
 
 generationImageScene.action("256x256", async (ctx) => {
-  ctx.scene.session.imageSize = "256x256";
+  ctx.session.imageSize = "256x256";
   await ctx.reply("Has elegido la opción de 256x256", Markup.removeKeyboard());
   ctx.scene.enter(STAGE.insertPromptImage);
 });

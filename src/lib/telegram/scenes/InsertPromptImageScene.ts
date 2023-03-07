@@ -19,7 +19,7 @@ insertPromptImageScene.command("cancel", (ctx) => {
 
 insertPromptImageScene.on(message("text"), async (ctx) => {
     const prompt = ctx.message?.text;
-    const imageSize = ctx.scene.session.imageSize;
+    const imageSize = ctx.session.imageSize;
     const imageResponse = await generationImage({prompt, imageSize});
     const url = getUrlImage(imageResponse);
     ctx.replyWithPhoto(url, {caption: prompt});

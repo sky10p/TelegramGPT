@@ -12,13 +12,21 @@ export const chatScene = new Scenes.BaseScene<MyContext>(
   "chat"
 );
 chatScene.enter((ctx) => {
-    ctx.scene.session.messages = createStack<ChatGptMessage>(4);
+    ctx.session.messages = createStack<ChatGptMessage>(4);
     ctx.reply("Comencemos a hablar😉")
 })
 
+chatScene.command("cancel", (ctx) => {
+  ctx.reply(
+    "Hasta la próxima😊",
+    Markup.removeKeyboard()
+  );
+  ctx.scene.leave();
+});
+
 chatScene.on(message("text"), GuardMiddleware, async (ctx) => {
     const text = ctx.message?.text;
-    const messages = ctx.scene.session.messages;
+    const messages = ctx.session.messages;
     messages.push({ role: "user", content: text });
     const responseChatGpt = await sendMessages({
       messages: messages.getElements(),
@@ -32,10 +40,4 @@ chatScene.on(message("text"), GuardMiddleware, async (ctx) => {
     });
   });
 
-  chatScene.command("cancel", (ctx) => {
-    ctx.reply(
-      "Hasta la próxima😊",
-      Markup.removeKeyboard()
-    );
-    ctx.scene.leave();
-  });
+

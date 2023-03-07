@@ -1,6 +1,9 @@
 help - Pide ayuda de cómo usar el bot
 chat - Empieza a conversar con TelegramGPT
 generation_image - Generar una imagen
+summarize - Resumir un texto
+key_points - Devolver los puntos más importantes de un texto
+improve - Mejorar la calidad de un texto(mejor explicado)
 usage_day - Precio por día
 usage_month - Precio por mes
 cancel - Cancelar la operación actual

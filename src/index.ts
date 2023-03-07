@@ -19,8 +19,8 @@ bot.help((ctx) => {
   ctx.chat.id;
   ctx.reply(helpMessage);
 });
-
 bot.use(session());
+
 bot.use(stage.middleware());
 
 
@@ -44,6 +44,23 @@ bot.command("generation_image", GuardMiddleware, async (ctx) => {
 
 bot.command("chat", (ctx)=>{
   ctx.scene.enter(STAGE.chat)
+})
+
+bot.command("summarize", (ctx)=>{
+  ctx.session.chatAction= 'summarize'
+  ctx.scene.enter(STAGE.askLanguage)
+})
+
+bot.command("key_points", (ctx)=>{
+  ctx.session.chatAction= 'key_points'
+
+  ctx.scene.enter(STAGE.askLanguage)
+})
+
+bot.command("improve", (ctx)=>{
+  ctx.session.chatAction= 'improve'
+
+  ctx.scene.enter(STAGE.askLanguage)
 })
 
 bot.command("cancel", async (ctx) => {
