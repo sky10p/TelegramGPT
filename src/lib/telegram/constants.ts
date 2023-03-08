@@ -1,0 +1,1 @@
+export const MAX_RESPONSE_TEXT_LENGTH = 4096;

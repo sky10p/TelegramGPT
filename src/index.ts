@@ -46,6 +46,10 @@ bot.command("chat", (ctx)=>{
   ctx.scene.enter(STAGE.chat)
 })
 
+bot.command("transcript", (ctx)=>{
+  ctx.scene.enter(STAGE.transcript)
+})
+
 bot.command("summarize", (ctx)=>{
   ctx.session.chatAction= 'summarize'
   ctx.scene.enter(STAGE.askLanguage)

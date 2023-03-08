@@ -38,15 +38,72 @@ Create your bot to use these code and get the key, you can add the actions to ma
 
 ### Actions
 
-* usage_day -> Cost per day
-* usage_month -> Cost per month
-* generation_image -> Generate an image
-* cancel -> cancel any complex process with more than one step.
-* summarize -> Summarize any text that you want in your native language.
-* /key_points -> Get the most important points in your native language
-* /improve -> Improve the input text in any language(native language or another)
+* help - Pide ayuda de cómo usar el bot
+* chat - Empieza a conversar con TelegramGPT
+* generation_image - Generar una imagen
+* transcript - Transcript an audio or video
+* summarize - Resumir un texto
+* key_points - Devolver los puntos más importantes de un texto
+* improve - Mejorar la calidad de un texto(mejor explicado)
+* usage_day - Precio por día
+* usage_month - Precio por mes
+* cancel - Cancelar la operación actual
 
+## Usage
+To use the bot, you need to create your own Telegram bot first. You can follow the instructions on Telegram's Bot FAQ to create your own bot. Once you have created your bot, you can add the commands that are available in the doc/actions.txt file to your bot's commands list.
 
-## Flows
-Png
-![Flow Diagram](src//doc/flow_diagram.png)
+After that, you need to set your Telegram bot token and OpenAI API key in the .env file. Once you have done that, you can start the bot with the command yarn start.
+
+## Dependencies
+* [Node.js]("https://nodejs.org/")
+* [Telegraf]("https://telegraf.js.org/")
+* [Axios]("https://github.com/axios/axios")
+* [Dotenv]("https://www.npmjs.com/package/dotenv")
+* [OpenAI API]("https://beta.openai.com/docs/api-reference/introduction)
+
+## Contributing
+Contributions are welcome! If you want to contribute to this project, please follow these steps:
+
+1. Fork this repository.
+2. Create a new branch with your feature or bug fix.
+3. Commit your changes and push the branch to your forked repository.
+4. Create a pull request to this repository.
+
+## License
+This project is licensed under the GNU General Public License v3.0. You can find more information in the [LICENSE]("https://chat.openai.com/LICENSE") file.
+
+## Examples
+
+### Generating images using DALL-E
+Use the /generation_image command to generate an image using DALL-E. Follow the bot's instructions to specify the image you want to generate.
+
+<img src="src/doc/screenshots/generate_image.png" width="200">
+
+### Generating images using DALL-E
+Use the /generation_image command to generate an image using DALL-E. Follow the bot's instructions to specify the image you want to generate.
+
+<img src="src/doc/screenshots/generate_image.png" width="200">
+
+### Generating text using chat-gpt3
+Use the /chat command to start a conversation with the bot. The bot will ask you what you want to talk about. Type your response and let the bot generate a response.
+
+Use the /summarize command to summarize a text. Follow the bot's instructions to specify the text you want to summarize.
+
+Use the /key_points command to get the key points of a text. Follow the bot's instructions to specify the text you want to get the key points of.
+
+Use the /improve command to improve the quality of a text. Follow the bot's instructions to specify the text you want to improve.
+
+<img src="src/doc/screenshots/chat.png" width="200">
+<img src="src/doc/screenshots/key_points.png" width="200">
+
+### Transcript audio or video using Whisper API
+Use the /transcript command to transcribe an audio or video file. Follow the bot's instructions to specify the file you want to transcribe.
+
+If the result text is greater than allowed of 4096, it will be sended as a file.
+
+<img src="src/doc/screenshots/transcript.png" width="400">
+
+### Pricing information
+Use the /usage_day or /usage_month command to get pricing information.
+
+<img src="src/doc/screenshots/usage.png" width="400">

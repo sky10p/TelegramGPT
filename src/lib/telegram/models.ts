@@ -8,6 +8,7 @@ interface MySceneSession extends Scenes.WizardSessionData {
     messages: IStack<ChatGptMessage>;
     language: string;
     chatAction: ChatActions;
+    transcriptUrl: string;
 }
 
 export interface BaseContext extends Context {

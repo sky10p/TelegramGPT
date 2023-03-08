@@ -1,5 +1,5 @@
 import { getChatGptAnswser, sendMessages } from "../../chatgpt/chat";
-import { Markup, Scenes, session } from "telegraf";
+import { Markup, Scenes } from "telegraf";
 import { message } from "telegraf/filters";
 import { GuardMiddleware } from "../middlewares";
 import { MyContext } from "../models";
