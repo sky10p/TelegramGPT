@@ -14,7 +14,7 @@ export const helpMessage = `🆘 ¡Hola! Soy el bot de TelegramGPT y estoy aquí
 
 💰 /usage_day - Consulta el precio por día de mi servicio.
 
-�� /usage_month - Consulta el precio por mes de mi servicio.
+💸 /usage_month - Consulta el precio por mes de mi servicio.
 
 ❌ /cancel - Si en algún momento quieres cancelar la operación actual, utiliza este comando.
 
