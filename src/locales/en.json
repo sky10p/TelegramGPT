@@ -1,0 +1,4 @@
+{
+  "Este es un bot de Telegram usando la tecnología ChatGPT.": "This is a Telegram bot using the ChatGPT Technology.",
+  "usage_day": "Today you have used ${token} tokens and generated ${numImages} images with a price of ${price} $"
+}

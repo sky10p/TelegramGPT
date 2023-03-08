@@ -1,0 +1,8 @@
+{
+	"Este es un bot de Telegram usando la tecnología ChatGPT.": "Este es un bot de Telegram usando la tecnología ChatGPT.",
+	"Hoy has usado {{tokens}} tokens y has generado {{numImages}} imágenes con un precio de {{price}} $": "Hoy has usado {{tokens}} tokens y has generado {{numImages}} imágenes con un precio de {{price}} $",
+	"Este mes has usado {{tokens}} tokens y has generado {{numImages}} imágenes con un precio de {{price}} $": "Este mes has usado {{tokens}} tokens y has generado {{numImages}} imágenes con un precio de {{price}} $",
+	"No estás en ningún proceso que se pueda cancelar.": "No estás en ningún proceso que se pueda cancelar.",
+	"Elige una de las acciones disponibles, si tienes dudas utiliza el comando /help😇": "Elige una de las acciones disponibles, si tienes dudas utiliza el comando /help😇",
+    "helpMessage": ""
+}
