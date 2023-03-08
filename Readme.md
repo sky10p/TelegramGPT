@@ -61,6 +61,12 @@ After that, you need to set your Telegram bot token and OpenAI API key in the .e
 * [Dotenv]("https://www.npmjs.com/package/dotenv")
 * [OpenAI API]("https://beta.openai.com/docs/api-reference/introduction)
 
+## Features in development
+
+* **I18n**: Internationalization support for the bot, allowing it to be used in different languages.
+* **Inline query support**: Adding support for inline queries to allow users to generate images, text or transcriptions directly in a chat without the need to start a conversation with the bot.
+* **Improving  the prompt for image generation**: The current prompt for image generation can be improved before generating the image.
+
 ## Contributing
 Contributions are welcome! If you want to contribute to this project, please follow these steps:
 
