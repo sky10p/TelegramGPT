@@ -1,4 +1,4 @@
-🆘 ¡Hola! Soy el bot de TelegramGPT y estoy aquí para ayudarte. Estas son las acciones que puedes realizar conmigo:
+export const helpMessage = `🆘 ¡Hola! Soy el bot de TelegramGPT y estoy aquí para ayudarte. Estas son las acciones que puedes realizar conmigo:
 
 ❓ /help - Si necesitas ayuda adicional, utiliza este comando para obtener información sobre cómo utilizar todas estas acciones.
 
@@ -18,4 +18,4 @@
 
 ❌ /cancel - Si en algún momento quieres cancelar la operación actual, utiliza este comando.
 
-Espero que esto te sea de ayuda. ¡No dudes en preguntarme cualquier cosa que necesites! 😀
+Espero que esto te sea de ayuda. ¡No dudes en preguntarme cualquier cosa que necesites! 😀`
