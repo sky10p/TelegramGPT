@@ -4,7 +4,7 @@ import { chatgptAxios } from "./utils";
 export const generationImage = async ({prompt, imageSize}: {prompt: string, imageSize: DalleImageSize}): Promise<DalleResponse> => {
     const data = {
         prompt,
-        imageSize
+        size: imageSize
     }
     try{
     const axiosResponse =  await chatgptAxios.post<DalleResponse>('images/generations', data);

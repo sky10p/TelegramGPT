@@ -1,5 +1,9 @@
 # TelegramGPTBot
 
+<p align="center">
+<a href="https://github.com/sky10p/TelegramGPT/blob/master/src/doc/donate/donate.md" alt="Donate shield"><img src="./src/doc/donate/donate-bitcoin.svg" /></a>
+</p>
+
 TelegramGPTBot is a Telegram bot built with Node.js and Telegraf that allows users to generate text, images and transcribe audio or video using OpenAI's GPT-3, DALL-E and Whisper models.
 
 ## Features
