@@ -12,8 +12,8 @@ export const chatScene = new Scenes.BaseScene<MyContext>(
   "chat"
 );
 chatScene.enter((ctx) => {
-    ctx.session.messages = createStack<ChatGptMessage>(4);
-    ctx.reply("Comencemos a hablar😉")
+  ctx.session.messages = createStack<ChatGptMessage>(4);
+  ctx.reply("Comencemos a hablar😉")
 })
 
 chatScene.command("cancel", (ctx) => {
@@ -25,9 +25,11 @@ chatScene.command("cancel", (ctx) => {
 });
 
 chatScene.on(message("text"), GuardMiddleware, async (ctx) => {
+  try {
     const text = ctx.message?.text;
     const messages = ctx.session.messages;
     messages.push({ role: "user", content: text });
+    await ctx.telegram.sendChatAction(ctx.chat.id, 'typing')
     const responseChatGpt = await sendMessages({
       messages: messages.getElements(),
       role: telegramGptRole
@@ -38,6 +40,9 @@ chatScene.on(message("text"), GuardMiddleware, async (ctx) => {
     ctx.reply(answer, {
       parse_mode: answer.includes("```") ? "Markdown" : undefined,
     });
-  });
+  } catch (error) {
+    ctx.reply("Ha habido un error enviando el mensaje a Open AI")
+  }
+});
 
 
