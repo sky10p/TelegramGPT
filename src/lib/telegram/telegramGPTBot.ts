@@ -22,6 +22,7 @@ telegramGptBot.use(stage.middleware());
 
 
 telegramGptBot.command("usage_day", GuardMiddleware, async (ctx) => {
+  await ctx.telegram.sendChatAction(ctx.chat.id, 'typing')
   const dailyUsage = await getDailyUsage();
   ctx.reply(
     `Hoy has usado ${dailyUsage.tokens} tokens y has generado ${dailyUsage.numImages} imágenes con un precio de ${dailyUsage.price} $`
@@ -29,9 +30,10 @@ telegramGptBot.command("usage_day", GuardMiddleware, async (ctx) => {
 });
 
 telegramGptBot.command("usage_month", GuardMiddleware, async (ctx) => {
+  await ctx.telegram.sendChatAction(ctx.chat.id, 'typing')
   const monthlyUsage = await getMonthlyUsage();
   ctx.reply(
-    `Este mes has usado ${monthlyUsage.tokens} tokens y has generado ${monthlyUsage.numImages} imágenes con un precio de ${monthlyUsage.price} $`
+    `Este mes has gastado ${monthlyUsage} $`
   );
 });
 

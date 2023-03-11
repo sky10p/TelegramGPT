@@ -4,11 +4,11 @@ import {
   getDayOfCurrentMonth,
   getFirstDayOfCurrentMonth,
 } from "../utils/dates";
-import { ChatGptUsage, DalleUsage, Usage, UsageResponse } from "./models";
+import { ChatGptUsage, DalleUsage, Usage, DailyUsageResponse, MonthlyUsageResponse } from "./models";
 import { getImagesPrice, getTokensPrice } from "./prices";
-import { chatgptAxios } from "./utils";
+import { chatgptAxios, dashboardOpenAiAxios } from "./utils";
 
-const calculateUsage = (usageResponse: UsageResponse): Usage => {
+const calculateUsage = (usageResponse: DailyUsageResponse): Usage => {
   const chatGptUsage: ChatGptUsage = usageResponse.data.reduce(
     (acc, curr) => {
       const tokens =
@@ -42,7 +42,7 @@ const calculateUsage = (usageResponse: UsageResponse): Usage => {
 };
 
 export const getDailyUsage = async (): Promise<Usage> => {
-  const axiosResponse = await chatgptAxios.get<UsageResponse>("usage", {
+  const axiosResponse = await chatgptAxios.get<DailyUsageResponse>("usage", {
     params: {
       date: getDateString(createDateWithoutTime(new Date())),
     },
@@ -51,13 +51,13 @@ export const getDailyUsage = async (): Promise<Usage> => {
   return calculateUsage(axiosResponse.data);
 };
 
-export const getMonthlyUsage = async (): Promise<Usage> => {
-  const axiosResponse = await chatgptAxios.get<UsageResponse>("usage", {
+export const getMonthlyUsage = async (): Promise<number> => {
+  const axiosResponse = await dashboardOpenAiAxios.get<MonthlyUsageResponse>("usage", {
     params: {
       start_date: getDateString(getFirstDayOfCurrentMonth()),
       end_date: getDateString(getDayOfCurrentMonth()),
     },
   });
 
-  return calculateUsage(axiosResponse.data);
+  return axiosResponse.data.total_usage / 100;
 };
