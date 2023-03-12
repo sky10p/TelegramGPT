@@ -1,15 +1,15 @@
 import { telegramGptBot } from "./lib/telegram/telegramGPTBot";
-import i18n from 'i18n'
-import path from "path";
+import { i18n, Language } from "./lib/i18n/i18n";
+import { en } from "./lib/i18n/en";
+import { es } from "./lib/i18n/es";
 
-i18n.configure({
-  locales: ['en', 'es'], // idiomas soportados
-  directory: path.join(__dirname, 'locales'), // ruta a los archivos de traducción
-  defaultLocale: 'es', // idioma predeterminado
-  queryParameter: 'lang', // parámetro de consulta para definir el idioma
+i18n.configure(Language.es, {
+  en: en,
+  es: es,
+  de: {},
+  fr: {},
+  it: {},
 });
-
-i18n.setLocale('es')
 
 telegramGptBot.launch();
 

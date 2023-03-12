@@ -6,12 +6,12 @@ import { GuardMiddleware } from "./middlewares";
 import { MyContext } from "./models";
 import { stage, STAGE } from "./scenes";
 import { helpMessage } from "./staticMessages/help.message";
-import {__} from 'i18n'
+import { __ } from "../../lib/i18n/i18n";
 
 export const telegramGptBot = new Telegraf<MyContext>(TELEGRAM_CONFIG.KEY);
 
 telegramGptBot.start((ctx) =>
-  ctx.reply(__("Este es un bot de Telegram usando la tecnología ChatGPT."))
+  ctx.reply(__`Este es un bot de Telegram usando la tecnología ChatGPT.`)
 );
 telegramGptBot.help((ctx) => {
   ctx.chat.id;
@@ -25,22 +25,14 @@ telegramGptBot.use(stage.middleware());
 telegramGptBot.command("usage_day", GuardMiddleware, async (ctx) => {
   const dailyUsage = await getDailyUsage();
   ctx.reply(
-    __("Hoy has usado {{tokens}} tokens y has generado {{numImages}} imágenes con un precio de {{price}} $", {
-      tokens: dailyUsage.tokens.toString(10),
-      numImages: dailyUsage.numImages.toString(10),
-      price: dailyUsage.price.toString(),
-    })
+    __`Hoy has usado ${dailyUsage.tokens} tokens y has generado ${dailyUsage.numImages} imágenes con un precio de ${dailyUsage.price} $`
   );
 });
 
 telegramGptBot.command("usage_month", GuardMiddleware, async (ctx) => {
   const monthlyUsage = await getMonthlyUsage();
   ctx.reply(
-    __("Este mes has usado {{tokens}} tokens y has generado {{numImages}} imágenes con un precio de {{price}} $", {
-      tokens: monthlyUsage.tokens.toString(10),
-      numImages: monthlyUsage.numImages.toString(10),
-      price: monthlyUsage.price.toString(),
-    })
+    __`Este mes has usado ${monthlyUsage.tokens} tokens y has generado ${monthlyUsage.numImages} imágenes con un precio de ${monthlyUsage.price} $`
   );
 });
 
@@ -75,11 +67,11 @@ telegramGptBot.command("improve", (ctx)=>{
 
 telegramGptBot.command("cancel", async (ctx) => {
     ctx.reply(
-        __(`No estás en ningún proceso que se pueda cancelar.`), Markup.removeKeyboard()
+        __`No estás en ningún proceso que se pueda cancelar.`, Markup.removeKeyboard()
       );
 })
 
 telegramGptBot.on(message("text"), async (ctx) => {
   
-  ctx.reply(__("Elige una de las acciones disponibles, si tienes dudas utiliza el comando /help😇"));
+  ctx.reply(__`Elige una de las acciones disponibles, si tienes dudas utiliza el comando /help😇`);
 });
