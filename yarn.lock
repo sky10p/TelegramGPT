@@ -641,11 +641,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/i18n@^0.13.6":
-  version "0.13.6"
-  resolved "https://registry.yarnpkg.com/@types/i18n/-/i18n-0.13.6.tgz#54199ca55c7b25cb45040ac566e90c94a57fdfa8"
-  integrity sha512-LLbimAA0oQilgP4PJBFH7sRdBUjWLo6R1rf46SUgVzsUZeXH3PT1piXj4LNX5ECDi0bLg9RmQMmY1K2qawqJqA==
-
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"
