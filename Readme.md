@@ -1,5 +1,9 @@
 # TelegramGPTBot
 
+<p align="center">
+<a href="https://github.com/sky10p/TelegramGPT/blob/master/src/doc/donate/donate.md" alt="Donate shield"><img src="./src/doc/donate/donate-bitcoin.svg" /></a>
+</p>
+
 TelegramGPTBot is a Telegram bot built with Node.js and Telegraf that allows users to generate text, images and transcribe audio or video using OpenAI's GPT-3, DALL-E and Whisper models.
 
 ## Features
@@ -55,11 +59,11 @@ To use the bot, you need to create your own Telegram bot first. You can follow t
 After that, you need to set your Telegram bot token and OpenAI API key in the .env file. Once you have done that, you can start the bot with the command yarn start.
 
 ## Dependencies
-* [Node.js]("https://nodejs.org/")
-* [Telegraf]("https://telegraf.js.org/")
-* [Axios]("https://github.com/axios/axios")
-* [Dotenv]("https://www.npmjs.com/package/dotenv")
-* [OpenAI API]("https://beta.openai.com/docs/api-reference/introduction)
+* [Node.js](https://nodejs.org/)
+* [Telegraf](https://telegraf.js.org/)
+* [Axios](https://github.com/axios/axios)
+* [Dotenv](https://www.npmjs.com/package/dotenv)
+* [OpenAI API](https://beta.openai.com/docs/api-reference/introduction)
 
 ## Features in development
 
@@ -76,7 +80,7 @@ Contributions are welcome! If you want to contribute to this project, please fol
 4. Create a pull request to this repository.
 
 ## License
-This project is licensed under the GNU General Public License v3.0. You can find more information in the [LICENSE]("https://chat.openai.com/LICENSE") file.
+This project is licensed under the GNU General Public License v3.0. You can find more information in the [LICENSE](https://www.gnu.org/licenses/gpl-3.0.html) file.
 
 ## Examples
 

@@ -22,9 +22,13 @@ export type DalleUsageResponse = {
     operation: DalleOperation
 }
 
-export type UsageResponse = {
+export type DailyUsageResponse = {
     data: ChatGptUsageResponse[],
-    dalle_api_data: DalleUsageResponse[]
+    dalle_api_data: DalleUsageResponse[],
+}
+
+export type MonthlyUsageResponse = {
+    total_usage: number
 }
 
 export type ChatGptUsage = {
