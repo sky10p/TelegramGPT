@@ -5,7 +5,6 @@ import { message } from "telegraf/filters";
 import { GuardMiddleware } from "./middlewares";
 import { MyContext } from "./models";
 import { stage, STAGE } from "./scenes";
-import { helpMessage } from "./staticMessages/help.message";
 import { __ } from "../../lib/i18n/i18n";
 
 export const telegramGptBot = new Telegraf<MyContext>(TELEGRAM_CONFIG.KEY);
@@ -15,7 +14,7 @@ telegramGptBot.start((ctx) =>
 );
 telegramGptBot.help((ctx) => {
   ctx.chat.id;
-  ctx.reply(helpMessage);
+  ctx.reply(__`help_message`);
 });
 telegramGptBot.use(session());
 
@@ -34,7 +33,7 @@ telegramGptBot.command("usage_month", GuardMiddleware, async (ctx) => {
   await ctx.telegram.sendChatAction(ctx.chat.id, 'typing')
   const monthlyUsage = await getMonthlyUsage();
   ctx.reply(
-    `Este mes has gastado ${monthlyUsage} $`
+    __`Este mes has gastado ${monthlyUsage} $`
   );
 });
 

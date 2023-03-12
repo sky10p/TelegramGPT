@@ -4,6 +4,7 @@ import { message } from "telegraf/filters";
 import { GuardMiddleware } from "../middlewares";
 import { MyContext } from "../models";
 import { MAX_RESPONSE_TEXT_LENGTH } from "../constants";
+import { __ } from "../../../lib/i18n/i18n";
 
 
 
@@ -19,7 +20,7 @@ const OPTIONS_SIZE = Markup.inlineKeyboard([
 
   
   transcriptFormatScene.enter((ctx) => {
-    ctx.reply(`Inserta el formato de resultado:`, OPTIONS_SIZE);
+    ctx.reply(__`Inserta el formato de resultado:`, OPTIONS_SIZE);
   });
 
 
@@ -27,7 +28,7 @@ const OPTIONS_SIZE = Markup.inlineKeyboard([
     const fileUrl = ctx.session.transcriptUrl;
     const audioResultFormat: TranscriptAudioResult = (ctx?.match?.[0] ?? 'text') as TranscriptAudioResult;
     console.log(`transcript ${fileUrl}`);
-    await ctx.reply("Transcription is processing...")
+    await ctx.reply(__`La transcripción se está procesando...`);
     const transcription = await transcriptAudio({transcriptUrl: fileUrl, transcriptAudioResult: audioResultFormat});
     if(transcription.length < MAX_RESPONSE_TEXT_LENGTH){
        await ctx.reply(transcription);
@@ -43,7 +44,7 @@ const OPTIONS_SIZE = Markup.inlineKeyboard([
 
   transcriptFormatScene.command("cancel", (ctx) => {
     ctx.reply(
-      "Has cancelado la operación",
+      __`Has cancelado la operación`,
       Markup.removeKeyboard()
     );
     ctx.scene.leave();

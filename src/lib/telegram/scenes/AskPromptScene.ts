@@ -4,12 +4,13 @@ import { message } from "telegraf/filters";
 import { GuardMiddleware } from "../middlewares";
 import { MyContext } from "../models";
 import { chatRoles } from "../../../lib/chatgpt/roles/chatRoles";
+import { __ } from "../../../lib/i18n/i18n";
 
 export const askPromptScene = new Scenes.BaseScene<MyContext>(
   "askPrompt"
 );
 askPromptScene.enter((ctx) => {
-    ctx.reply(`Inserta el prompt:`)
+    ctx.reply(__`Inserta el prompt:`)
 })
 
 
@@ -31,7 +32,7 @@ askPromptScene.on(message("text"), GuardMiddleware, async (ctx) => {
 
   askPromptScene.command("cancel", (ctx) => {
     ctx.reply(
-      "Has cancelado la operación",
+      __`Has cancelado la operación`,
       Markup.removeKeyboard()
     );
     ctx.scene.leave();

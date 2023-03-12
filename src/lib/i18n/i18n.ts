@@ -20,7 +20,7 @@ const i18nFn = () => {
         translations = translationsSource;
       }
     },
-    getTranslations: () => translations[language],
+    getTranslations: () => translations?.[language] ?? {},
   };
 };
 

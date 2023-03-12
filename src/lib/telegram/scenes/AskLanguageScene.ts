@@ -1,4 +1,5 @@
-import { Markup, Scenes, session } from "telegraf";
+import { __ } from "../../i18n/i18n";
+import { Markup, Scenes } from "telegraf";
 import { STAGE } from ".";
 import { GuardMiddleware } from "../middlewares";
 import { MyContext } from "../models";
@@ -6,11 +7,11 @@ import { MyContext } from "../models";
 export const askLanguageScene = new Scenes.BaseScene<MyContext>("askLanguage");
 
 const OPTIONS_SIZE = Markup.inlineKeyboard([
-  Markup.button.callback("Español", "Español"),
-  Markup.button.callback("Inglés", "Inglés"),
+  Markup.button.callback(__`Español`, "Español"),
+  Markup.button.callback(__`Inglés`, "Inglés"),
 ]);
 askLanguageScene.enter((ctx) => {
-  ctx.reply(`Inserta el idioma:`, OPTIONS_SIZE);
+  ctx.reply(__`Inserta el idioma:`, OPTIONS_SIZE);
 });
 
 askLanguageScene.action(/.*/, GuardMiddleware, (ctx) => {
@@ -19,7 +20,7 @@ askLanguageScene.action(/.*/, GuardMiddleware, (ctx) => {
     ctx.session.language = text;
     ctx.scene.enter(STAGE.askPrompt);
   } else {
-    ctx.reply("Inserta un idioma correcto");
+    ctx.reply(__`Inserta un idioma correcto`);
   }
 });
 
