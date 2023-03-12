@@ -5,16 +5,16 @@ import { message } from "telegraf/filters";
 import { GuardMiddleware } from "./middlewares";
 import { MyContext } from "./models";
 import { stage, STAGE } from "./scenes";
-import { helpMessage } from "./staticMessages/help.message";
+import { __ } from "../../lib/i18n/i18n";
 
 export const telegramGptBot = new Telegraf<MyContext>(TELEGRAM_CONFIG.KEY);
 
 telegramGptBot.start((ctx) =>
-  ctx.reply("Este es un bot de Telegram usando la tecnología ChatGPT.")
+  ctx.reply(__`Este es un bot de Telegram usando la tecnología ChatGPT.`)
 );
 telegramGptBot.help((ctx) => {
   ctx.chat.id;
-  ctx.reply(helpMessage);
+  ctx.reply(__`help_message`);
 });
 telegramGptBot.use(session());
 
@@ -25,7 +25,7 @@ telegramGptBot.command("usage_day", GuardMiddleware, async (ctx) => {
   await ctx.telegram.sendChatAction(ctx.chat.id, 'typing')
   const dailyUsage = await getDailyUsage();
   ctx.reply(
-    `Hoy has usado ${dailyUsage.tokens} tokens y has generado ${dailyUsage.numImages} imágenes con un precio de ${dailyUsage.price} $`
+    __`Hoy has usado ${dailyUsage.tokens} tokens y has generado ${dailyUsage.numImages} imágenes con un precio de ${dailyUsage.price} $`
   );
 });
 
@@ -33,7 +33,7 @@ telegramGptBot.command("usage_month", GuardMiddleware, async (ctx) => {
   await ctx.telegram.sendChatAction(ctx.chat.id, 'typing')
   const monthlyUsage = await getMonthlyUsage();
   ctx.reply(
-    `Este mes has gastado ${monthlyUsage} $`
+    __`Este mes has gastado ${monthlyUsage} $`
   );
 });
 
@@ -68,11 +68,11 @@ telegramGptBot.command("improve", (ctx)=>{
 
 telegramGptBot.command("cancel", async (ctx) => {
     ctx.reply(
-        `No estás en ningún proceso que se pueda cancelar.`, Markup.removeKeyboard()
+        __`No estás en ningún proceso que se pueda cancelar.`, Markup.removeKeyboard()
       );
 })
 
 telegramGptBot.on(message("text"), async (ctx) => {
   
-  ctx.reply("Elige una de las acciones disponibles, si tienes dudas utiliza el comando /help😇");
+  ctx.reply(__`Elige una de las acciones disponibles, si tienes dudas utiliza el comando /help😇`);
 });

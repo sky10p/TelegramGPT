@@ -1,3 +1,4 @@
+import { __ } from "../../../lib/i18n/i18n";
 import { Markup, Scenes } from "telegraf";
 import { message } from "telegraf/filters";
 import { getChatGptAnswser, sendMessages } from "../../chatgpt/chat";
@@ -13,12 +14,12 @@ export const chatScene = new Scenes.BaseScene<MyContext>(
 );
 chatScene.enter((ctx) => {
   ctx.session.messages = createStack<ChatGptMessage>(4);
-  ctx.reply("Comencemos a hablar😉")
+  ctx.reply(__`Comencemos a hablar😉`)
 })
 
 chatScene.command("cancel", (ctx) => {
   ctx.reply(
-    "Hasta la próxima😊",
+    __`Hasta la próxima😊`,
     Markup.removeKeyboard()
   );
   ctx.scene.leave();
@@ -41,7 +42,7 @@ chatScene.on(message("text"), GuardMiddleware, async (ctx) => {
       parse_mode: answer.includes("```") ? "Markdown" : undefined,
     });
   } catch (error) {
-    ctx.reply("Ha habido un error enviando el mensaje a Open AI")
+    ctx.reply(__`Ha habido un error enviando el mensaje a Open AI`)
   }
 });
 

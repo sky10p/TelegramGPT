@@ -1,3 +1,4 @@
+import { __ } from "../../../lib/i18n/i18n";
 import { Markup, Scenes } from "telegraf";
 import { message } from "telegraf/filters";
 import { STAGE } from ".";
@@ -15,7 +16,7 @@ const OPTIONS_SIZE = Markup.inlineKeyboard([
 
 generationImageScene.enter((ctx) => {
   ctx.replyWithMarkdownV2(
-    "Elige el tamaño de imagen que se va a generar",
+    __`Elige el tamaño de imagen que se va a generar`,
     OPTIONS_SIZE
   );
 });
@@ -23,7 +24,7 @@ generationImageScene.enter((ctx) => {
 generationImageScene.action("1024x1024", async (ctx) => {
   ctx.session.imageSize = "1024x1024";
   await ctx.reply(
-    "Has elegido la opción de 1024x1024",
+    __`Has elegido la opción de 1024x1024`,
     Markup.removeKeyboard()
   );
   ctx.scene.enter(STAGE.insertPromptImage);
@@ -31,19 +32,19 @@ generationImageScene.action("1024x1024", async (ctx) => {
 
 generationImageScene.action("512x512", async (ctx) => {
   ctx.session.imageSize = "512x512";
-  await ctx.reply("Has elegido la opción de 512x512", Markup.removeKeyboard());
+  await ctx.reply(__`Has elegido la opción de 512x512`, Markup.removeKeyboard());
   ctx.scene.enter(STAGE.insertPromptImage);
 });
 
 generationImageScene.action("256x256", async (ctx) => {
   ctx.session.imageSize = "256x256";
-  await ctx.reply("Has elegido la opción de 256x256", Markup.removeKeyboard());
+  await ctx.reply(__`Has elegido la opción de 256x256`, Markup.removeKeyboard());
   ctx.scene.enter(STAGE.insertPromptImage);
 });
 
 generationImageScene.command("cancel", (ctx) => {
   ctx.reply(
-    "Has cancelado la generación, no gastarás nada.",
+    __`Has cancelado la generación, no gastarás nada.`,
     Markup.removeKeyboard()
   );
   ctx.scene.leave();
@@ -51,7 +52,7 @@ generationImageScene.command("cancel", (ctx) => {
 
 generationImageScene.on(message("text"), async (ctx) => {
   ctx.replyWithMarkdownV2(
-    "Por favor, elige uno de los tamaños válidos",
+    __`Por favor, elige uno de los tamaños válidos`,
     OPTIONS_SIZE
   );
 });

@@ -3,12 +3,13 @@ import { Markup, Scenes } from "telegraf";
 import { message } from "telegraf/filters";
 import { GuardMiddleware } from "../middlewares";
 import { MyContext } from "../models";
+import { __ } from "../../../lib/i18n/i18n";
 
 export const transcriptScene = new Scenes.BaseScene<MyContext>(
   "transcript"
 );
 transcriptScene.enter((ctx) => {
-    ctx.reply(`Envía un audio o video`)
+    ctx.reply(__`Envía un audio o video`)
 })
 
 transcriptScene.on(message("audio"), GuardMiddleware, async (ctx) => {
@@ -19,7 +20,7 @@ transcriptScene.on(message("audio"), GuardMiddleware, async (ctx) => {
       ctx.session.transcriptUrl = fileUrl;
       ctx.scene.enter("transcriptFormat");
     }else{
-      ctx.reply(`Solo se permiten los siguientes formatos de audio o video (m4a, mp3, mp4, mpeg, mpga, wav, webm)`)
+      ctx.reply(__`Solo se permiten los siguientes formatos de audio o video (m4a, mp3, mp4, mpeg, mpga, wav, webm)`)
       ctx.scene.leave();
     }
 
@@ -33,7 +34,7 @@ transcriptScene.on(message("audio"), GuardMiddleware, async (ctx) => {
       ctx.session.transcriptUrl = fileUrl;
       ctx.scene.enter("transcriptFormat");
     }else{
-      ctx.reply(`Solo se permiten los siguientes formatos de audio o video (m4a, mp3, mp4, mpeg, mpga, wav, webm)`)
+      ctx.reply(__`Solo se permiten los siguientes formatos de audio o video (m4a, mp3, mp4, mpeg, mpga, wav, webm)`)
       ctx.scene.leave();
     }
 
@@ -47,7 +48,7 @@ transcriptScene.on(message("audio"), GuardMiddleware, async (ctx) => {
       ctx.session.transcriptUrl = fileUrl;
       ctx.scene.enter("transcriptFormat");
     }else{
-      ctx.reply(`Solo se permiten los siguientes formatos de audio o video (m4a, mp3, mp4, mpeg, mpga, wav, webm)`)
+      ctx.reply(__`Solo se permiten los siguientes formatos de audio o video (m4a, mp3, mp4, mpeg, mpga, wav, webm)`)
       ctx.scene.leave();
     }
 
@@ -55,7 +56,7 @@ transcriptScene.on(message("audio"), GuardMiddleware, async (ctx) => {
 
   transcriptScene.command("cancel", (ctx) => {
     ctx.reply(
-      "Has cancelado la operación",
+      __`Has cancelado la operación`,
       Markup.removeKeyboard()
     );
     ctx.scene.leave();
