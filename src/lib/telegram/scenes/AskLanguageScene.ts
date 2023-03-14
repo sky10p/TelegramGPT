@@ -1,4 +1,4 @@
-import { __ } from "../../i18n/i18n";
+import { __ } from "@easy-i18n/core";
 import { Markup, Scenes } from "telegraf";
 import { STAGE } from ".";
 import { GuardMiddleware } from "../middlewares";

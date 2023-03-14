@@ -1,4 +1,4 @@
-import { __ } from "../../../lib/i18n/i18n";
+import { __ } from "@easy-i18n/core";
 import { Markup, Scenes } from "telegraf";
 import { message } from "telegraf/filters";
 import { generationImage, getUrlImage } from "../../chatgpt/generation";

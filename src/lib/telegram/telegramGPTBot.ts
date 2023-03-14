@@ -5,7 +5,7 @@ import { message } from "telegraf/filters";
 import { GuardMiddleware } from "./middlewares";
 import { MyContext } from "./models";
 import { stage, STAGE } from "./scenes";
-import { __ } from "../../lib/i18n/i18n";
+import { __ } from "@easy-i18n/core";
 
 export const telegramGptBot = new Telegraf<MyContext>(TELEGRAM_CONFIG.KEY);
 

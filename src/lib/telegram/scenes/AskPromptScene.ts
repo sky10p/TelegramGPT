@@ -4,7 +4,7 @@ import { message } from "telegraf/filters";
 import { GuardMiddleware } from "../middlewares";
 import { MyContext } from "../models";
 import { chatRoles } from "../../../lib/chatgpt/roles/chatRoles";
-import { __ } from "../../../lib/i18n/i18n";
+import { __ } from "@easy-i18n/core";
 
 export const askPromptScene = new Scenes.BaseScene<MyContext>(
   "askPrompt"

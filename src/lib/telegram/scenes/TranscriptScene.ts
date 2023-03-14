@@ -3,7 +3,7 @@ import { Markup, Scenes } from "telegraf";
 import { message } from "telegraf/filters";
 import { GuardMiddleware } from "../middlewares";
 import { MyContext } from "../models";
-import { __ } from "../../../lib/i18n/i18n";
+import { __ } from "@easy-i18n/core";
 
 export const transcriptScene = new Scenes.BaseScene<MyContext>(
   "transcript"

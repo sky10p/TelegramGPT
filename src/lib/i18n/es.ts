@@ -1,6 +1,6 @@
 import { helpMessage } from "../telegram/staticMessages/help.es.message";
 
-export const es = {
+export default {
   "Hoy has usado {{0}} tokens y has generado {{1}} imágenes con un precio de {{2}} $":
     "Hoy has usado {{0}} tokens y has generado {{1}} imágenes con un precio de {{2}} $",
   "Este mes has gastado {{0}} $": "Este mes has gastado {{0}} $",
