@@ -306,10 +306,17 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@easy-i18n/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@easy-i18n/core/-/core-1.1.0.tgz#4c8de215f434299d42c62e7cfe5a411c8e5c22ec"
-  integrity sha512-Da2XPhEHPo/Gcv18eGlNkgU02CghoJ0eC7L35wxHP3Xu/Ajux4RbdviZyTiaPpgRg1PvQqzQQnD8waHW1cIZ5w==
+"@easy-i18n/core@^1.2.1", "@easy-i18n/core@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@easy-i18n/core/-/core-1.5.0.tgz#7fb307c867fc78c5a53c3b2d2cf35c0af20107de"
+  integrity sha512-2pmJ2cMcABwU8xo+pU/WyF+tnPhdLoTi6gDPRCqJyxzFTXSfdUMtU8Eiwf7hJzweKeZmChcba6fUTJT8NZGTsA==
+
+"@easy-i18n/extract@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@easy-i18n/extract/-/extract-1.3.0.tgz#4247c31b188a13c6f9337b39c190057e20967db3"
+  integrity sha512-V34fRJtfTWlnxLlixHYqVjL3sIEs+zaGGtn5BxNfMAS6P6J8H3POnXN9JrRW468sGVDJw1i8r+9cqmhPyVmRIQ==
+  dependencies:
+    "@easy-i18n/core" "^1.2.1"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"

@@ -30,7 +30,7 @@ chatScene.on(message("text"), GuardMiddleware, async (ctx) => {
     const text = ctx.message?.text;
     const messages = ctx.session.messages;
     messages.push({ role: "user", content: text });
-    await ctx.telegram.sendChatAction(ctx.chat.id, 'typing')
+    ctx.telegram.sendChatAction(ctx.chat.id, 'typing')
     const responseChatGpt = await sendMessages({
       messages: messages.getElements(),
       role: telegramGptRole

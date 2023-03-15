@@ -18,6 +18,7 @@ askPromptScene.on(message("text"), GuardMiddleware, async (ctx) => {
     const text = ctx.message?.text;
     const chatAction = ctx.session.chatAction;
     const language = ctx.session.language;
+    ctx.telegram.sendChatAction(ctx.chat.id, 'typing')
     const responseChatGpt = await sendMessages({
       messages: [{role: 'user', content: text}],
       role: {role: 'system', content: chatRoles[chatAction](language)}

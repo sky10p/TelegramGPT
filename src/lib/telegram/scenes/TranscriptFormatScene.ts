@@ -28,6 +28,8 @@ const OPTIONS_SIZE = Markup.inlineKeyboard([
     const fileUrl = ctx.session.transcriptUrl;
     const audioResultFormat: TranscriptAudioResult = (ctx?.match?.[0] ?? 'text') as TranscriptAudioResult;
     console.log(`transcript ${fileUrl}`);
+    ctx.chat ?? ctx.telegram.sendChatAction(ctx.chat || "", 'typing')
+
     await ctx.reply(__`La transcripción se está procesando...`);
     const transcription = await transcriptAudio({transcriptUrl: fileUrl, transcriptAudioResult: audioResultFormat});
     if(transcription.length < MAX_RESPONSE_TEXT_LENGTH){

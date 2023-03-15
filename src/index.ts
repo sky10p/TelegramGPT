@@ -5,10 +5,7 @@ import es from "./lib/i18n/es";
 
 i18n.configure(Language.es, {
   en: en,
-  es: es,
-  de: {},
-  fr: {},
-  it: {},
+  es: es
 });
 
 telegramGptBot.launch();
