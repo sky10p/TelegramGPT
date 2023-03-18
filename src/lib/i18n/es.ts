@@ -40,4 +40,5 @@ export default {
     "Solo se permiten los siguientes formatos de audio o video (m4a, mp3, mp4, mpeg, mpga, wav, webm)",
   "Improving and translating: {{0}}": "Traduciendo y mejorando texto: {{0}}",
   "Creating an image with Dall-e...": "Creando una imagen con dall-e...",
+  "Estás en un chat con GPT, ejecuta el comando /cancel para salir😊": "Estás en un chat con GPT, ejecuta el comando /cancel para salir😊"
 };

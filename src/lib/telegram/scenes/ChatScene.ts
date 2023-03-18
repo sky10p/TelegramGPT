@@ -25,6 +25,14 @@ chatScene.command("cancel", (ctx) => {
   ctx.scene.leave();
 });
 
+chatScene.command(/.+/, (ctx) => {
+  ctx.reply(
+    __`Estás en un chat con GPT, ejecuta el comando /cancel para salir😊`,
+    Markup.removeKeyboard()
+  );
+
+});
+
 chatScene.on(message("text"), GuardMiddleware, async (ctx) => {
   try {
     const text = ctx.message?.text;

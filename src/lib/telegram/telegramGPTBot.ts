@@ -11,6 +11,7 @@ import { chatRoles } from "../../lib/chatgpt/roles/chatRoles";
 import { DalleImageSize } from "../../lib/chatgpt/models";
 import { generationImage } from "../../lib/chatgpt/generation";
 import { getUrlImage } from "../../lib/chatgpt/generation";
+import { buildInlineQueryResponse } from "./utils/inlineQueries";
 
 export const telegramGptBot = new Telegraf<MyContext>(TELEGRAM_CONFIG.KEY);
 
@@ -66,6 +67,12 @@ telegramGptBot.command("improve", (ctx) => {
   ctx.session.chatAction = "improve";
 
   ctx.scene.enter(STAGE.askLanguage);
+});
+
+telegramGptBot.command("commit", (ctx) => {
+  ctx.session.chatAction = "commit";
+  ctx.session.language = "en";
+  ctx.scene.enter(STAGE.askPrompt);
 });
 
 telegramGptBot.command("cancel", async (ctx) => {
@@ -146,7 +153,7 @@ telegramGptBot.on("chosen_inline_result", GuardMiddleware, async (ctx) => {
         undefined,
         undefined,
         inline_message_id,
-        await sendGptMessage({ message: query })
+        buildInlineQueryResponse(result_id, query, await sendGptMessage({ message: query }))
       );
       break;
     case "english":
@@ -154,10 +161,11 @@ telegramGptBot.on("chosen_inline_result", GuardMiddleware, async (ctx) => {
         undefined,
         undefined,
         inline_message_id,
-        await sendGptMessage({
+        buildInlineQueryResponse(result_id, query,await sendGptMessage({
           message: query,
           role: { role: "system", content: chatRoles["improve"]("Inglés") },
-        })
+        }))
+        
       );
 
       break;
@@ -166,10 +174,10 @@ telegramGptBot.on("chosen_inline_result", GuardMiddleware, async (ctx) => {
         undefined,
         undefined,
         inline_message_id,
-        await sendGptMessage({
+        buildInlineQueryResponse(result_id, query,await sendGptMessage({
           message: query,
           role: { role: "system", content: chatRoles["improve"]("Español") },
-        })
+        }))
       );
       break;
     case "image":
@@ -180,7 +188,7 @@ telegramGptBot.on("chosen_inline_result", GuardMiddleware, async (ctx) => {
         undefined,
         undefined,
         inline_message_id,
-        query + " " + url
+        buildInlineQueryResponse(result_id, query, url)
       );
       break;
     default:
