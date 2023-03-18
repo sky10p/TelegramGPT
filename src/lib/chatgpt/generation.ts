@@ -11,6 +11,7 @@ export const generationImage = async ({prompt, imageSize}: {prompt: string, imag
     return axiosResponse.data;
     }catch(error){
         console.log(JSON.stringify(error))
+        console.log(error.message)
         throw error;
     }
     

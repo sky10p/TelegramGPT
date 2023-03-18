@@ -38,4 +38,6 @@ export default {
   "Envía un audio o video": "Envía un audio o video",
   "Solo se permiten los siguientes formatos de audio o video (m4a, mp3, mp4, mpeg, mpga, wav, webm)":
     "Solo se permiten los siguientes formatos de audio o video (m4a, mp3, mp4, mpeg, mpga, wav, webm)",
+  "Improving and translating: {{0}}": "Traduciendo y mejorando texto: {{0}}",
+  "Creating an image with Dall-e...": "Creando una imagen con dall-e...",
 };

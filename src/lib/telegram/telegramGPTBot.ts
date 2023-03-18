@@ -14,7 +14,6 @@ import { getUrlImage } from "../../lib/chatgpt/generation";
 
 export const telegramGptBot = new Telegraf<MyContext>(TELEGRAM_CONFIG.KEY);
 
-let chatId = "";
 telegramGptBot.start((ctx) =>
   ctx.reply(__`Este es un bot de Telegram usando la tecnología ChatGPT.`)
 );
@@ -76,13 +75,23 @@ telegramGptBot.command("cancel", async (ctx) => {
   );
 });
 
-/* telegramGptBot.on("inline_query", async (ctx) => {
+telegramGptBot.on("inline_query", async (ctx) => {
   const query = ctx.inlineQuery.query;
   console.log(query);
   if (!query ?? query === "") {
     return [];
   }
 
+  const replyMarkup = {
+    inline_keyboard: [
+      [
+        {
+          text: "Procesar",
+          callback_data: "chat_gpt_process",
+        },
+      ],
+    ],
+  };
 
   return ctx.answerInlineQuery([
     {
@@ -91,8 +100,9 @@ telegramGptBot.command("cancel", async (ctx) => {
       title: `Ask something`,
       description: `Ask o chat something with chat GPT`,
       input_message_content: {
-        message_text: `chat: ${query}...`
-      }
+        message_text: `chat: ${query}...`,
+      },
+      reply_markup: replyMarkup,
     },
     {
       type: "article",
@@ -102,6 +112,7 @@ telegramGptBot.command("cancel", async (ctx) => {
       input_message_content: {
         message_text: __`Improving and translating: ${query}`,
       },
+      reply_markup: replyMarkup,
     },
     {
       type: "article",
@@ -111,6 +122,7 @@ telegramGptBot.command("cancel", async (ctx) => {
       input_message_content: {
         message_text: __`Improving and translating: ${query}`,
       },
+      reply_markup: replyMarkup,
     },
     {
       type: "article",
@@ -120,44 +132,40 @@ telegramGptBot.command("cancel", async (ctx) => {
       input_message_content: {
         message_text: __`Creating an image with Dall-e...`,
       },
+      reply_markup: replyMarkup,
     },
   ]);
-}); */
-
-telegramGptBot.on ('inline_query', async (ctx) => {
-  const results: any = [
-    {
-      type: 'article',
-      id: '1',
-      title: 'Hola',
-      input_message_content: {
-        message_text: 'Hola'
-      },
-      reply_markup: Markup.inlineKeyboard ([
-        Markup.button.callback ('Editar', 'editar')
-      ])
-    }
-  ];
-  await ctx.answerInlineQuery (results);
 });
 
-/* telegramGptBot.on("chosen_inline_result", GuardMiddleware, async (ctx) => {
-  const { query, result_id } = ctx.chosenInlineResult;
+telegramGptBot.on("chosen_inline_result", GuardMiddleware, async (ctx) => {
+  const { query, result_id, inline_message_id } = ctx.chosenInlineResult;
 
   switch (result_id) {
     case "ask":
-      ctx.reply(await sendGptMessage({ message: query }));
+      ctx.telegram.editMessageText(
+        undefined,
+        undefined,
+        inline_message_id,
+        await sendGptMessage({ message: query })
+      );
       break;
     case "english":
-      ctx.reply(
+      ctx.telegram.editMessageText(
+        undefined,
+        undefined,
+        inline_message_id,
         await sendGptMessage({
           message: query,
           role: { role: "system", content: chatRoles["improve"]("Inglés") },
         })
       );
+
       break;
     case "spanish":
-      ctx.reply(
+      ctx.telegram.editMessageText(
+        undefined,
+        undefined,
+        inline_message_id,
         await sendGptMessage({
           message: query,
           role: { role: "system", content: chatRoles["improve"]("Español") },
@@ -168,20 +176,17 @@ telegramGptBot.on ('inline_query', async (ctx) => {
       const imageSize: DalleImageSize = "1024x1024";
       const imageResponse = await generationImage({ prompt: query, imageSize });
       const url = getUrlImage(imageResponse);
-      ctx.replyWithPhoto(url, { caption: query });
+      ctx.telegram.editMessageText(
+        undefined,
+        undefined,
+        inline_message_id,
+        query + " " + url
+      );
       break;
     default:
       ctx.reply("This should not happen");
       break;
   }
-}); */
-
-telegramGptBot.on("chosen_inline_result", GuardMiddleware, async (ctx) => {
-  const { query, result_id, from } = ctx.chosenInlineResult;
-
-  console.log(ctx.chosenInlineResult)
-
-  
 });
 
 telegramGptBot.on(message("text"), async (ctx) => {
