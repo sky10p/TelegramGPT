@@ -14,6 +14,8 @@ export const helpMessage = `🆘 ¡Hola! Soy el bot de TelegramGPT y estoy aquí
 
 🔑 /key_points - Si necesitas extraer los puntos más importantes de un texto, utiliza este comando para obtener una lista de los puntos clave.
 
+📝 /commit - Genera un comando de commit y su descripción a partir de tu texto. 
+
 💰 /usage_day - Consulta el precio por día de mi servicio.
 
 💸 /usage_month - Consulta el precio por mes de mi servicio.

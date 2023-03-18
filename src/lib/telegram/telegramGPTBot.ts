@@ -68,6 +68,12 @@ telegramGptBot.command("improve", (ctx) => {
   ctx.scene.enter(STAGE.askLanguage);
 });
 
+telegramGptBot.command("commit", (ctx) => {
+  ctx.session.chatAction = "commit";
+  ctx.session.language = "en";
+  ctx.scene.enter(STAGE.askPrompt);
+});
+
 telegramGptBot.command("cancel", async (ctx) => {
   ctx.reply(
     __`No estás en ningún proceso que se pueda cancelar.`,

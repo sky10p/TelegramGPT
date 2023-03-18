@@ -42,16 +42,17 @@ Create your bot to use these code and get the key, you can add the actions to ma
 
 ### Actions
 
-* help - Pide ayuda de cómo usar el bot
-* chat - Empieza a conversar con TelegramGPT
-* generation_image - Generar una imagen
-* transcript - Transcript an audio or video
-* summarize - Resumir un texto
-* key_points - Devolver los puntos más importantes de un texto
-* improve - Mejorar la calidad de un texto(mejor explicado)
-* usage_day - Precio por día
-* usage_month - Precio por mes
-* cancel - Cancelar la operación actual
+* help - Request assistance on how to use the bot
+* chat - Start a conversation with TelegramGPT
+* generation_image - Generate an image
+* transcript - Transcribe an audio or video
+* summarize - Summarize a text
+* key_points - Return the most important points of a text
+* improve - Enhance the quality of a text (more accurately explained)
+* commit - Generate a commit command and its description based on your text
+* usage_day - Price per day
+* usage_month - Price per month
+* cancel - Cancel the current operation.
 
 ## Usage
 To use the bot, you need to create your own Telegram bot first. You can follow the instructions on Telegram's Bot FAQ to create your own bot. Once you have created your bot, you can add the commands that are available in the doc/actions.txt file to your bot's commands list.

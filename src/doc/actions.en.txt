@@ -1,0 +1,11 @@
+help - Request assistance on how to use the bot
+chat - Start a conversation with TelegramGPT
+generation_image - Generate an image
+transcript - Transcribe an audio or video
+summarize - Summarize a text
+key_points - Return the most important points of a text
+improve - Enhance the quality of a text (more accurately explained)
+commit - Generate a commit command and its description based on your text
+usage_day - Price per day
+usage_month - Price per month
+cancel - Cancel the current operation.
