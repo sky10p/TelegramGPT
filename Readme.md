@@ -59,6 +59,19 @@ To use the bot, you need to create your own Telegram bot first. You can follow t
 
 After that, you need to set your Telegram bot token and OpenAI API key in the .env file. Once you have done that, you can start the bot with the command yarn start.
 
+### Using the bot with Inline Queries
+
+The ChatGpt bot can also be used through Telegram inline queries. To use this feature, you need to activate inline mode for your bot using BotFather.
+
+Once inline mode is activated, you can perform the following actions in a chat with someone else:
+
+* Ask ChatGPT a question or about you want to.
+* Translates text to English.
+* Translates text to Spanish.
+* Generate an image.
+
+To use these features, simply start typing a message to the person you want to chat with, and include the "@" symbol followed by the name of your bot (e.g. "@ChatGPT"). This will bring up a menu with the four options listed above. Choose the action you want to perform and the type in the text you want to use. The bot will then generate a response based on your selected action and prompt.
+
 ## Dependencies
 * [Node.js](https://nodejs.org/)
 * [Telegraf](https://telegraf.js.org/)
@@ -68,8 +81,6 @@ After that, you need to set your Telegram bot token and OpenAI API key in the .e
 
 ## Features in development
 
-* **I18n**: Internationalization support for the bot, allowing it to be used in different languages.
-* **Inline query support**: Adding support for inline queries to allow users to generate images, text or transcriptions directly in a chat without the need to start a conversation with the bot.
 * **Improving  the prompt for image generation**: The current prompt for image generation can be improved before generating the image.
 
 ## Contributing
