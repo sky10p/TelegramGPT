@@ -12,6 +12,7 @@ import { DalleImageSize } from "../../lib/chatgpt/models";
 import { generationImage } from "../../lib/chatgpt/generation";
 import { getUrlImage } from "../../lib/chatgpt/generation";
 import { buildInlineQueryResponse } from "./utils/inlineQueries";
+import { getModel } from "../../lib/chatgpt/settings";
 
 export const telegramGptBot = new Telegraf<MyContext>(TELEGRAM_CONFIG.KEY);
 
@@ -73,6 +74,15 @@ telegramGptBot.command("commit", (ctx) => {
   ctx.session.chatAction = "commit";
   ctx.session.language = "en";
   ctx.scene.enter(STAGE.askPrompt);
+});
+
+telegramGptBot.command("settings",GuardMiddleware, (ctx) => {
+  ctx.scene.enter(STAGE.settings);
+});
+
+telegramGptBot.command("current_model",GuardMiddleware, async (ctx) => {
+  const model = await getModel();
+  ctx.reply(__`El modelo que estás usando es: ${model}`);
 });
 
 telegramGptBot.command("cancel", async (ctx) => {

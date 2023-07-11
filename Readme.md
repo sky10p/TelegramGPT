@@ -52,6 +52,8 @@ Create your bot to use these code and get the key, you can add the actions to ma
 * commit - Generate a commit command and its description based on your text
 * usage_day - Price per day
 * usage_month - Price per month
+* settings - Change the GPT model
+* current_model - View the active GPT model in use
 * cancel - Cancel the current operation.
 
 ## Usage

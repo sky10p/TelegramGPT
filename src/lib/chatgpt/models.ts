@@ -1,5 +1,10 @@
 
 export type ChatGptRole = 'system' | 'assistant' | 'user'
+export type ChatGptModel = 'gpt-3.5-turbo' | 'gpt-4';
+export enum ChatGptModelEnum {
+    GPT_3 = 'gpt-3.5-turbo',
+    GPT_4 = 'gpt-4'
+}
 export type ChatGptMessage = {
     role: ChatGptRole,
     content: string;

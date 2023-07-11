@@ -8,4 +8,6 @@ improve - Enhance the quality of a text (more accurately explained)
 commit - Generate a commit command and its description based on your text
 usage_day - Price per day
 usage_month - Price per month
+settings - Change the GPT model
+current_model - View the active GPT model in use
 cancel - Cancel the current operation.
