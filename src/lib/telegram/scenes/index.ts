@@ -7,6 +7,7 @@ import { generationImageScene } from "./GenerationImageScene";
 import { insertPromptImageScene } from "./InsertPromptImageScene";
 import { transcriptFormatScene } from "./TranscriptFormatScene";
 import { transcriptScene } from "./TranscriptScene";
+import { settingsScene } from "./SettingsScene";
 
 export enum STAGE {
   chat = "chat",
@@ -16,6 +17,7 @@ export enum STAGE {
   askPrompt = "askPrompt",
   transcript = "transcript",
   transcriptFormat = "transcriptFormat",
+  settings = "settings",
 }
 
 export const stage = new Scenes.Stage<BaseContext>([
@@ -26,4 +28,5 @@ export const stage = new Scenes.Stage<BaseContext>([
   askPromptScene,
   transcriptScene,
   transcriptFormatScene,
+  settingsScene
 ]);

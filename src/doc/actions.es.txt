@@ -8,4 +8,6 @@ improve - Mejorar la calidad de un texto(mejor explicado)
 commit - Genera un comando de commit y su descripción a partir de tu texto
 usage_day - Precio por día
 usage_month - Precio por mes
+settings - Cambiar el modelo GPT a usar
+current_model - Ver el modelo GPT en uso
 cancel - Cancelar la operación actual

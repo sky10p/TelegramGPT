@@ -41,5 +41,11 @@ export default {
     "Only the following audio or video formats are allowed (m4a, mp3, mp4, mpeg, mpga, wav, webm)",
   "Improving and translating: {{0}}": "Improving and translating: {{0}}",
   "Creating an image with Dall-e...": "Creating an image with Dall-e...",
-  "Estás en un chat con GPT, ejecuta el comando /cancel para salir😊": "You are in a chat with GPT, execute the command /cancel to exit😊"
+  "Estás en un chat con GPT, ejecuta el comando /cancel para salir😊": "You are in a chat with GPT, execute the command /cancel to exit😊",
+  "gpt3": "gpt3",
+  "gpt4": "gpt4",
+  "Elige el modelo gpt:": "Choose the gpt model:",
+  "Modelo gpt cambiado a {{0}}": "Gpt model changed to {{0}}",
+  "Inserta un modelo de gpt correcto": "Insert a correct gpt model",
+  "El modelo que estás usando es: {{0}}": "The model you are using is: {{0}}",
 };
