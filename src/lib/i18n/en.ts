@@ -48,4 +48,5 @@ export default {
   "Modelo gpt cambiado a {{0}}": "Gpt model changed to {{0}}",
   "Inserta un modelo de gpt correcto": "Insert a correct gpt model",
   "El modelo que estás usando es: {{0}}": "The model you are using is: {{0}}",
+  "This functionality is already not available in the api": "This functionality is already not available in the api"
 };

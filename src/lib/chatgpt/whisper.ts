@@ -1,4 +1,4 @@
-import { chatgptAxios } from "./utils";
+import { chatgptAxios, telegramOpenAi } from "./utils";
 import FormData from 'form-data'
 import axios from "axios";
 
@@ -15,13 +15,20 @@ export const transcriptAudio = async({transcriptUrl, transcriptAudioResult}: {tr
     form.append('model', 'whisper-1');
 
     try{
+    /* const response = await telegramOpenAi.audio.transcriptions.create({
+        file:audio.data,
+    model: 'whisper-1',
+    response_format: transcriptAudioResult
+    }) */
+
+
     const axiosResponse =  await chatgptAxios.post<string | JSON>('audio/transcriptions', form, {
         headers: {
             ...form.getHeaders()
         }
     });
 
-    return JSON.stringify(axiosResponse.data);
+    return axiosResponse.data;
     }catch(error){
         console.log(JSON.stringify(error))
         throw error;

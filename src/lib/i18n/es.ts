@@ -46,5 +46,6 @@ export default {
   "Elige el modelo gpt:": "Elige el modelo gpt:",
   "Modelo gpt cambiado a {{0}}": "Modelo gpt cambiado a {{0}}",
   "Inserta un modelo de gpt correcto": "Inserta un modelo de gpt correcto",
-  "El modelo que estás usando es: {{0}}": "El modelo que estás usando es: {{0}}"
+  "El modelo que estás usando es: {{0}}": "El modelo que estás usando es: {{0}}",
+  "This functionality is already not available in the api": "Esta funcionalidad no está ya disponible en la api"
 };

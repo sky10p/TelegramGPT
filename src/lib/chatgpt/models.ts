@@ -1,9 +1,9 @@
 
 export type ChatGptRole = 'system' | 'assistant' | 'user'
-export type ChatGptModel = 'gpt-3.5-turbo' | 'gpt-4';
+export type ChatGptModel = 'gpt-3.5-turbo-1106' | 'gpt-4-1106-preview';
 export enum ChatGptModelEnum {
-    GPT_3 = 'gpt-3.5-turbo',
-    GPT_4 = 'gpt-4'
+    GPT_3 = 'gpt-3.5-turbo-1106',
+    GPT_4 = 'gpt-4-1106-preview'
 }
 export type ChatGptMessage = {
     role: ChatGptRole,

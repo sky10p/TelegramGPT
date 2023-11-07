@@ -29,16 +29,20 @@ telegramGptBot.use(stage.middleware());
 
 telegramGptBot.command("usage_day", GuardMiddleware, async (ctx) => {
   ctx.telegram.sendChatAction(ctx.chat.id, "typing");
-  const dailyUsage = await getDailyUsage();
+  // this functionality has already not available in the api
+  /* const dailyUsage = await getDailyUsage();
   ctx.reply(
     __`Hoy has usado ${dailyUsage.tokens} tokens y has generado ${dailyUsage.numImages} imágenes con un precio de ${dailyUsage.price} $`
-  );
+  ); */
+  ctx.reply(__`This functionality is already not available in the api`);
 });
 
 telegramGptBot.command("usage_month", GuardMiddleware, async (ctx) => {
   ctx.telegram.sendChatAction(ctx.chat.id, "typing");
-  const monthlyUsage = await getMonthlyUsage();
-  ctx.reply(__`Este mes has gastado ${monthlyUsage} $`);
+  // this functionality has already not available in the api
+  // const monthlyUsage = await getMonthlyUsage();
+  // ctx.reply(__`Este mes has gastado ${monthlyUsage} $`);
+  ctx.reply(__`This functionality is already not available in the api`);
 });
 
 telegramGptBot.command("generation_image", GuardMiddleware, async (ctx) => {

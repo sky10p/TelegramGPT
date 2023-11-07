@@ -1,5 +1,5 @@
 import { DalleImageSize, DalleResponse } from "./models";
-import { chatgptAxios } from "./utils";
+import { telegramOpenAi } from "./utils";
 
 export const generationImage = async ({prompt, imageSize}: {prompt: string, imageSize: DalleImageSize}): Promise<DalleResponse> => {
     const data = {
@@ -7,8 +7,20 @@ export const generationImage = async ({prompt, imageSize}: {prompt: string, imag
         size: imageSize
     }
     try{
-    const axiosResponse =  await chatgptAxios.post<DalleResponse>('images/generations', data);
-    return axiosResponse.data;
+    const response = await telegramOpenAi.images.generate({
+        model: "dall-e-3",
+        prompt,
+        size: imageSize
+    });
+    
+    return {
+        created: new Date(response.created).toISOString(),
+        data: response.data.map(element => {
+            return {
+                url: element.url ?? ""
+            }
+        })
+    };
     }catch(error){
         console.log(JSON.stringify(error))
         console.log(error.message)

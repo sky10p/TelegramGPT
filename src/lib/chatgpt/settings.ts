@@ -22,7 +22,7 @@ export const getModel = async (): Promise<ChatGptModel> => {
     const result = await db.get('SELECT name FROM model')
     await db.close();
     if(!result || !result.name) {
-        return 'gpt-3.5-turbo';
+        return 'gpt-3.5-turbo-1106';
     }
 
     return result.name;
