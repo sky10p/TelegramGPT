@@ -28,7 +28,7 @@ export const transcriptAudio = async({transcriptUrl, transcriptAudioResult}: {tr
         }
     });
 
-    return axiosResponse.data;
+    return JSON.stringify(axiosResponse.data);
     }catch(error){
         console.log(JSON.stringify(error))
         throw error;
