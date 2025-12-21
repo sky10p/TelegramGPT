@@ -8,7 +8,7 @@ If you like TelegramGPTBot and would like to support its development and mainten
 
 You can make a donation in Bitcoin using the following address:
 
-* Address: bc1qkfpw9x3906t9drww2hkdws2djnvkewjmfqnue4
+* Address: bc1q23gdyk0hwcqcngc503tu0a8y4f4dczgamlqkxw
 
 ![BTC QR code](qr-bitcoin.png)
 
